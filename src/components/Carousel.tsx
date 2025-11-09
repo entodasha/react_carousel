@@ -12,9 +12,9 @@ type Props = {
 
 const Carousel: React.FC<Props> = ({
   images,
-  step,
-  frameSize,
-  itemWidth,
+  step = 3,
+  frameSize = 3,
+  itemWidth = 130,
   animationDuration,
   infinite,
 }) => {
@@ -62,12 +62,6 @@ const Carousel: React.FC<Props> = ({
     } else {
       setCurrentIndex(newIndex);
     }
-
-    if (newIndex > images.length - frameSize) {
-      newIndex = infinite ? 0 : images.length - frameSize;
-    }
-
-    setCurrentIndex(newIndex);
   }
 
   return (
@@ -101,7 +95,7 @@ const Carousel: React.FC<Props> = ({
                 className="Carousel__image"
                 width={itemWidth}
                 style={{
-                  width: `${itemWidth}px;`,
+                  width: `${itemWidth}px`,
                 }}
               />
             </li>

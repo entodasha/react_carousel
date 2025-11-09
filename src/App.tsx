@@ -132,7 +132,7 @@ class App extends React.Component<{}, State> {
               className="form__input"
               type="checkbox"
               id="infiniteId"
-              defaultChecked={false}
+              checked={infinite}
               onChange={this.handleInfiniteChange}
             />
           </label>
