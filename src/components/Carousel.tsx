@@ -15,8 +15,8 @@ const Carousel: React.FC<Props> = ({
   step = 3,
   frameSize = 3,
   itemWidth = 130,
-  animationDuration,
-  infinite,
+  animationDuration = 1000,
+  infinite = false,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isJumping, setIsJumping] = useState(false);
@@ -29,18 +29,16 @@ const Carousel: React.FC<Props> = ({
       if (infinite) {
         setIsJumping(true);
         newIndex = images.length - frameSize;
-        setCurrentIndex(newIndex);
 
         setTimeout(() => {
           setIsJumping(false);
         }, 10);
       } else {
         newIndex = 0;
-        setCurrentIndex(newIndex);
       }
-    } else {
-      setCurrentIndex(newIndex);
     }
+
+    setCurrentIndex(newIndex);
   }
 
   function handleNext() {
@@ -50,18 +48,16 @@ const Carousel: React.FC<Props> = ({
       if (infinite) {
         setIsJumping(true);
         newIndex = 0;
-        setCurrentIndex(newIndex);
 
         setTimeout(() => {
           setIsJumping(false);
         }, 20);
       } else {
         newIndex = images.length - frameSize;
-        setCurrentIndex(newIndex);
       }
-    } else {
-      setCurrentIndex(newIndex);
     }
+
+    setCurrentIndex(newIndex);
   }
 
   return (
